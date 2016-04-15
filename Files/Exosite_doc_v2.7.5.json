@@ -1,0 +1,153 @@
+[
+  {
+    "order": 0,
+    "label": "Exosite_Sample",
+    "id": "96f5f528.342198",
+    "type": "tab",
+    "children": []
+  },
+  {
+    "id": "35dca063.ba0678",
+    "type": "exosite cik",
+    "__package": "luvitred/services",
+    "__version": "0.1.0",
+    "cik": "d944d94b04514d159ddb9f72c84e317e4b902a1a",
+    "provision": "cik",
+    "vendor": "",
+    "devicename": "",
+    "usehttps": true,
+    "name": "Exosite_dev"
+  },
+  {
+    "id": "59c76f66.4a3b3",
+    "type": "exosite out",
+    "__package": "luvitred/services",
+    "__version": "0.1.0",
+    "device": "35dca063.ba0678",
+    "field": "payload",
+    "alias": "",
+    "queueenabled": false,
+    "queue": "",
+    "name": "Exosite_out",
+    "x": 600,
+    "y": 100,
+    "z": "96f5f528.342198",
+    "wires": []
+  },
+  {
+    "id": "20d69234.62dba6",
+    "type": "inject",
+    "__package": "luvitred/core-core",
+    "__version": "0.1.0",
+    "name": "Random1",
+    "topic": "rand1",
+    "payload": "",
+    "payloadType": "rinteger",
+    "fromval": 0,
+    "toval": "100",
+    "repeat": "10",
+    "crontab": "",
+    "once": false,
+    "x": 212.5,
+    "y": 50,
+    "z": "96f5f528.342198",
+    "wires": [
+      [
+        "798b00af.48cdc8"
+      ]
+    ]
+  },
+  {
+    "id": "f9e4e122.280e18",
+    "type": "inject",
+    "__package": "luvitred/core-core",
+    "__version": "0.1.0",
+    "name": "Random2",
+    "topic": "rand2",
+    "payload": "",
+    "payloadType": "rnumber",
+    "fromval": 0,
+    "toval": "100",
+    "repeat": "10",
+    "crontab": "",
+    "once": false,
+    "x": 212.5,
+    "y": 150,
+    "z": "96f5f528.342198",
+    "wires": [
+      [
+        "798b00af.48cdc8"
+      ]
+    ]
+  },
+  {
+    "id": "798b00af.48cdc8",
+    "type": "combine",
+    "__package": "luvitred/core-logic",
+    "__version": "0.1.0",
+    "condition": "rand1 and rand2",
+    "clear": "rand1,rand2",
+    "topic": "report",
+    "collapse": false,
+    "name": "Combined",
+    "x": 400,
+    "y": 100,
+    "z": "96f5f528.342198",
+    "wires": [
+      [
+        "59c76f66.4a3b3",
+        "d4e84f1f.08eea"
+      ]
+    ]
+  },
+  {
+    "id": "d4e84f1f.08eea",
+    "type": "debug",
+    "__package": "luvitred/core-core",
+    "__version": "0.1.0",
+    "name": "",
+    "all": false,
+    "active": true,
+    "console": "false",
+    "complete": "false",
+    "x": 575,
+    "y": 150,
+    "z": "96f5f528.342198",
+    "wires": []
+  },
+  {
+    "id": "51af4be3.fb86ec",
+    "type": "exosite in",
+    "__package": "luvitred/services",
+    "__version": "0.1.0",
+    "device": "35dca063.ba0678",
+    "alias": "command",
+    "querytype": "long",
+    "name": "Exosite_in",
+    "timeout": "60",
+    "topic": "",
+    "x": 312.5,
+    "y": 225,
+    "z": "96f5f528.342198",
+    "wires": [
+      [
+        "862411a5.8631"
+      ]
+    ]
+  },
+  {
+    "id": "862411a5.8631",
+    "type": "debug",
+    "__package": "luvitred/core-core",
+    "__version": "0.1.0",
+    "name": "",
+    "all": false,
+    "active": true,
+    "console": "false",
+    "complete": "false",
+    "x": 475,
+    "y": 225,
+    "z": "96f5f528.342198",
+    "wires": []
+  }
+]
